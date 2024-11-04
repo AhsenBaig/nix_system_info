@@ -1,0 +1,4 @@
+# Configuration for ORDS Info
+# This is an example configuration file. Copy this file to ords_info.conf and modify the values as needed.
+ords_shared_path=/u01/config/ords
+ords_config_path=/default/path/to/ords/config

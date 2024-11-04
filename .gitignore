@@ -1,0 +1,5 @@
+# Ignore all .conf files in .scripts_config directory
+**/.scripts_config/*.conf
+
+# Do not ignore .example files in .scripts_config directory
+!**/.scripts_config/*.conf.example
