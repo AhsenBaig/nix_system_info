@@ -5,7 +5,7 @@
 ########################################################
 
 # Source common utility functions
-source "$(dirname "$0")/common_utils.sh"
+source "$(dirname "$0")/../common/common_utils.sh"
 
 # Function to display usage information
 usage() {
@@ -20,7 +20,7 @@ usage() {
 # Declare an associative array to map function names to function calls
 declare -A functions
 
-# Dynamically source all scripts in the current directory
+# Dynamically source all scripts in the scripts directory
 for script in "$(dirname "$0")"/*.sh; do
     # Skip the main script itself
     [ "$script" != "$(dirname "$0")/$(basename "$0")" ] && source "$script"
