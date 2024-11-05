@@ -16,5 +16,5 @@ docker cp scripts/ <containerid>:/usr/local/tomcat && docker exec -u root <conta
 
 > Example: Run appsInfo.sh script
 >```bash
->clear && source "$(dirname "$0")/common_utils.sh" && ./appsInfo.sh
+>clear && ./appsInfo.sh
 >```

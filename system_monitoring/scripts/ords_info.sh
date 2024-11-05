@@ -3,19 +3,15 @@
 ########################################################
 # ORDS Info Script
 ########################################################
+# Source the common utilities script
+source "$(dirname "${BASH_SOURCE[0]}")/../common/common_utils.sh"
 
-# Source common utility functions
-source "$(dirname "$0")/common_utils.sh"
+# Set up the environment
+setup_environment
 
 # Default values
 DEFAULT_ORDS_SHARED_PATH="/u01/ords"
 DEFAULT_ORDS_CONFIG_PATH="/default/path/to/ords"
-
-# Load configuration file
-CONFIG_FILE="$(dirname "$0")/.config/ords_info.conf"
-if [ -f "$CONFIG_FILE" ]; then
-    source "$CONFIG_FILE"
-fi
 
 # Use the value from the configuration file if set, otherwise use the environment variable, otherwise use the default value
 ords_shared_path="${ords_shared_path:-$DEFAULT_ORDS_SHARED_PATH}"

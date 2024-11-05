@@ -4,23 +4,20 @@
 # System Info Script
 ########################################################
 
-# Source common utility functions
-source "$(dirname "$0")/common_utils.sh"
+# Source the common utilities script
+source "$(dirname "${BASH_SOURCE[0]}")/../common/common_utils.sh"
+
+# Set up the environment
+setup_environment
 
 # Default values
 DEFAULT_DISK_USAGE_THRESHOLD=80
 
-# Load configuration file
-CONFIG_FILE="$(dirname "$0")/.config/system_info.conf"
-if [ -f "$CONFIG_FILE" ]; then
-    source "$CONFIG_FILE"
-else
-    disk_usage_threshold="$DEFAULT_DISK_USAGE_THRESHOLD"
-fi
+# Use the value from the configuration file if set, otherwise use the default value
+disk_usage_threshold="${disk_usage_threshold:-$DEFAULT_DISK_USAGE_THRESHOLD}"
 
 # Function to print system information
 print_system_info() {
-
     # OS information
     print_table_header "🖥️ System Info" "ℹ️ Details"
     os_info

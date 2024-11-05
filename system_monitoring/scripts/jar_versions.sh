@@ -4,8 +4,11 @@
 # JAR Versions Script
 ########################################################
 
-# Source common utility functions
-source "$(dirname "$0")/common_utils.sh"
+# Source the common utilities script
+source "$(dirname "${BASH_SOURCE[0]}")/../common/common_utils.sh"
+
+# Set up the environment
+setup_environment
 
 # Function to print JAR file versions
 print_jar_versions() {
