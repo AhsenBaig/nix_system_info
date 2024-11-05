@@ -10,8 +10,7 @@ load_config() {
     # echo "Check config file: $config_file"
     if [ -f "$config_file" ]; then
         source "$config_file"
-    else
-        echo
+    #else
         #if [ "$(basename "$config_file")" != "common_utils.conf" ]; then
         #echo "NOTE: Configuration file '$config_file' not found."
         #    return 1
@@ -37,6 +36,7 @@ setup_environment() {
 
 # Function to print a table header with a variable number of columns
 print_table_header() {
+    printf "\n"
     local cols=("$@")
     local num_cols=${#cols[@]}
     
@@ -76,7 +76,7 @@ print_table_row() {
     
     # Check if num_cols is zero
     if [ "$num_cols" -eq 0 ]; then
-        echo "Error: No columns provided for table row"
+        # echo "Error: No columns provided for table row"
         return 1
     fi
 

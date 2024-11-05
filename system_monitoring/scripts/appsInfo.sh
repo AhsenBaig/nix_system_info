@@ -7,6 +7,8 @@
 # Source common utility functions
 source "$(dirname "$0")/../common/common_utils.sh"
 
+echo "---------------------------------------- ` date ` ----------------------------------------"
+
 # Function to display usage information
 usage() {
     echo "Usage: $0 [function_name]"
