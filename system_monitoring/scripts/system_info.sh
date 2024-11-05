@@ -11,7 +11,7 @@ source "$(dirname "$0")/common_utils.sh"
 DEFAULT_DISK_USAGE_THRESHOLD=80
 
 # Load configuration file
-CONFIG_FILE="$(dirname "$0")/.scripts_config/system_info.conf"
+CONFIG_FILE="$(dirname "$0")/.config/system_info.conf"
 if [ -f "$CONFIG_FILE" ]; then
     source "$CONFIG_FILE"
 else

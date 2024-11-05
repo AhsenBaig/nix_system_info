@@ -4,17 +4,17 @@ This repository contains various scripts that require configuration settings. Th
 
 ## Configuration Files
 
-Configuration files are stored in the `.scripts_config` directory. Each script has its own configuration file with settings specific to that script. Example configuration files are provided with the `.example` extension. These example files should be copied and modified as needed.
+Configuration files are stored in the `.config` directory. Each script has its own configuration file with settings specific to that script. Example configuration files are provided with the `.example` extension. These example files should be copied and modified as needed.
 
 ### Example Configuration Files
 
-- `.scripts_config/ords_info.conf.example`
-- `.scripts_config/another_config.conf.example`
+- `.config/ords_info.conf.example`
+- `.config/another_config.conf.example`
 
 ### Creating Configuration Files
 
 To create a configuration file, copy the example file and modify the values as needed. For example:
 
 ```sh
-cp .scripts_config/ords_info.conf.example .scripts_config/ords_info.conf
+cp .config/ords_info.conf.example .config/ords_info.conf
 ```

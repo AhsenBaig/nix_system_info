@@ -12,7 +12,7 @@ DEFAULT_ORDS_SHARED_PATH="/u01/ords"
 DEFAULT_ORDS_CONFIG_PATH="/default/path/to/ords"
 
 # Load configuration file
-CONFIG_FILE="$(dirname "$0")/.scripts_config/ords_info.conf"
+CONFIG_FILE="$(dirname "$0")/.config/ords_info.conf"
 if [ -f "$CONFIG_FILE" ]; then
     source "$CONFIG_FILE"
 fi
