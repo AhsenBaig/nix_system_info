@@ -34,6 +34,34 @@ setup_environment() {
     load_config "$config_file"
 }
 
+# Function to find .jar and .war files and extract Java version information
+find_jar_war_versions() {
+    local dir="$1"
+    local current_dir=""
+    find "$dir" -type f \( -name "*.jar" -o -name "*.war" \) | while read -r file; do
+        local file_dir="$(dirname "$file")"
+        local file_name="$(basename "$file")"
+        # Print the directory path as a separate row if it has changed
+        if [ "$file_dir" != "$current_dir" ]; then
+            current_dir="$file_dir"
+            print_table_row "📂 Directory" "$file_dir"
+        fi
+        # Extract Java version information from the manifest file
+        if jar tf "$file" | grep -q "META-INF/MANIFEST.MF"; then
+            jar xf "$file" META-INF/MANIFEST.MF
+            java_version=$(grep "Build-Jdk" META-INF/MANIFEST.MF | cut -d' ' -f2)
+            if [ -n "$java_version" ]; then
+                print_table_row "$file_name" "$java_version"
+            else
+                print_table_row "$file_name" "Not specified"
+            fi
+            rm -f META-INF/MANIFEST.MF
+        else
+            print_table_row "$file_name" "Manifest not found"
+        fi
+    done
+}
+
 # Function to print a table header with a variable number of columns
 print_table_header() {
     printf "\n"

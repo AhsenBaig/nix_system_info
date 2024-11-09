@@ -10,19 +10,21 @@ source "$(dirname "${BASH_SOURCE[0]}")/../common/common_utils.sh"
 # Set up the environment
 setup_environment
 
-# Function to print JAR file versions
-print_jar_versions() {
-    print_table_header "📦 JAR File" "🛠️ Version"
+# Default values
+DEFAULT_JAR_DIR="/path/to/jar/files"
 
-    # Check if java command exists
-    if ! command -v java &> /dev/null; then
-        print_table_row "Java" "Command not found"
-        return
+# Use the value from the configuration file if set, otherwise use the environment variable, otherwise use the default value
+JAR_DIR="${JAR_DIR:-$DEFAULT_JAR_DIR}"
+
+# Function to print Jar versions information
+print_jar_versions_info() {
+    print_table_header "📦 Jar Versions" "ℹ️ Details"
+
+    # Check if JAR_DIR directory exists
+    if [ -d "$JAR_DIR" ]; then
+        print_table_row "📂 JAR_DIR" "$JAR_DIR"
+        find_jar_war_versions "$JAR_DIR"
+    else
+        print_table_row "📂 JAR_DIR" "Not found"
     fi
-
-    for jar in "$CATALINA_HOME"/lib/*.jar; do
-        version_output=$(java -jar "$jar" -v 2>&1 || echo "Unknown")
-        version=$(echo "$version_output" | head -n 1)
-        print_table_row "$jar" "$version"
-    done
 }
